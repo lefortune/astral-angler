@@ -7,9 +7,11 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     #region Movement_variables
-    public float moveSpeed = 0.05f;
+    public float baseMoveSpeed = 0.05f;
+    public float moveSpeed;
     float x_input;
     float y_input;
+    [HideInInspector] public bool canMove = true;
     #endregion
 
     #region Physics_components
@@ -24,35 +26,45 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Other_variables
-    
+
     public GameObject pointerPrefab;
     GameObject interactablePointer;
     #endregion
 
     #region Unity_functions
-    private void Awake() {
+    private void Awake()
+    {
         PlayerRB = GetComponent<Rigidbody2D>();
         PlayerSR = GetComponent<SpriteRenderer>();
         PlayerColl = GetComponent<BoxCollider2D>();
         // anim = GetComponent<Animator>();
     }
-    
-    private void Update() {
+
+    private void Start()
+    {
+        moveSpeed = baseMoveSpeed;
+
+    }
+
+    private void Update()
+    {
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
 
         Move();
-        
+
     }
     #endregion
 
     #region Movement_functions
     private void Move()
     {
+        if (!canMove) return;
+
         Vector2 movement = new Vector2(x_input, y_input) * moveSpeed;
         PlayerRB.MovePosition(PlayerRB.position + movement);
-            moveSpeed = 0.05f;
-            // anim.speed = 1;
+        moveSpeed = 0.05f;
+        // anim.speed = 1;
 
         if (movement != Vector2.zero)
         {
@@ -70,6 +82,11 @@ public class PlayerController : MonoBehaviour
         {
             PlayerSR.flipX = false;
         }
+    }
+    
+    public void SetMovementMultiplier(float multiplier)
+    {
+        moveSpeed = baseMoveSpeed * multiplier;
     }
     #endregion
 
