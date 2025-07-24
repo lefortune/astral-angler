@@ -61,7 +61,12 @@ public class PlayerController : MonoBehaviour
     {
         if (!canMove) return;
 
-        Vector2 movement = new Vector2(x_input, y_input) * moveSpeed;
+        Vector2 movement = new Vector2(x_input, y_input);
+        if (movement.sqrMagnitude > 1)
+        {
+            movement = movement.normalized;
+        }
+        movement *= moveSpeed;
         PlayerRB.MovePosition(PlayerRB.position + movement);
         // anim.speed = 1;
 

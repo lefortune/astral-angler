@@ -33,9 +33,10 @@ public class FishingController : MonoBehaviour
     void Start()
     {
         playerController = playerTransform.GetComponent<PlayerController>();
+        castOrigin = playerTransform;
         isCharging = false;
         isFishing = false;
-        isFishingGame = false;        
+        isFishingGame = false;
     }
 
     void Update()
@@ -54,6 +55,7 @@ public class FishingController : MonoBehaviour
         {
             isCharging = true;
             playerController.SetMovementMultiplier(slowMoveMultiplier); // slow down when charging or fihsing
+            AudioManager.Instance.Play("Creak");
         }
 
         if (Input.GetMouseButton(0) && isCharging)
@@ -94,7 +96,7 @@ public class FishingController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && isFishing && !bobberBehavior.isBiteActive)   // retrieve an uneventful bobber
         {
-            EndFishing();
+            StartCoroutine(RecallBobber(false));
         }
     }
 
@@ -104,11 +106,15 @@ public class FishingController : MonoBehaviour
 
         Vector3 direction = playerController.currDirection; // adjust if using mouse aim or facing. currently uses facing
         Vector3 worldTarget = castOrigin.position + direction * distance;
+        worldTarget += new Vector3(0f, -0.4f, 0f);  // Adjust cast origin to be at the player's feet
 
         // Convert to tile position
         Vector3Int tilePos = fishingTilemap.WorldToCell(worldTarget);
         TileBase tile = fishingTilemap.GetTile(tilePos);
         FishingTile fishingTile = tile as FishingTile;
+
+        AudioManager.Instance.Stop("Creak");
+        AudioManager.Instance.Play("CastLine");
 
         isFishing = true;   // isFishing is true from bobber cast, not just when it lands
 
@@ -127,6 +133,23 @@ public class FishingController : MonoBehaviour
             EndFishing();
         }
         yield return null;
+    }
+
+    private IEnumerator RecallBobber(bool caught)
+    {
+        if (caught)
+        {
+            Debug.Log("Bobber caught a fish!");
+            AudioManager.Instance.Play("CatchFish");
+        }
+        else
+        {
+            Debug.Log("Bobber recalled without catch");
+            AudioManager.Instance.Play("Line");
+        }
+        yield return StartCoroutine(AnimateBobberThrow(currentBobber.transform, castOrigin.position, 0.5f));
+
+        EndFishing();
     }
 
     private IEnumerator AnimateBobberThrow(Transform bobber, Vector3 target, float duration)
@@ -151,10 +174,10 @@ public class FishingController : MonoBehaviour
         bobber.position = target;
     }
 
-
     public void EndFishing()    // should be called whenever fishing ends
     {
         Destroy(currentBobber);
+        AudioManager.Instance.Stop("Creak");
         isFishing = false;
         chargeMeter = 0f;
         chargeBarUI.UpdatePointer(0f);

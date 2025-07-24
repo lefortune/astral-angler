@@ -24,7 +24,5 @@ public class ChargeBarUI : MonoBehaviour
         Vector2 newPos = pointer.anchoredPosition;
         newPos.x = -barWidth / 2f + t * barWidth;
         pointer.anchoredPosition = newPos;
-
-        Debug.Log($"Pointer moved to: {newPos.x} (bar width: {barWidth}, t: {t})");
     }
 }
