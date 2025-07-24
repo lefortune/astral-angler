@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         PlayerSR = GetComponent<SpriteRenderer>();
         PlayerColl = GetComponent<BoxCollider2D>();
-        // anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     private void Start()
@@ -81,11 +81,16 @@ public class PlayerController : MonoBehaviour
         if (currDirection.x < 0)
         {
             PlayerSR.flipX = true;
+            anim.SetBool("FacingLeft", true); 
         }
         else if (currDirection.x > 0)
         {
             PlayerSR.flipX = false;
+            anim.SetBool("FacingLeft", false); 
+
         }
+
+        anim.SetFloat("Speed", movement.magnitude);
     }
     
     public void SetMovementMultiplier(float multiplier)
