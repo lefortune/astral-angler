@@ -77,7 +77,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("NotMoving");
             anim.ResetTrigger("Moving");
         }
 
@@ -86,12 +85,12 @@ public class PlayerController : MonoBehaviour
 
         if (currDirection.x < 0)
         {
-            PlayerSR.flipX = true;
+            PlayerSR.flipX = false;
             anim.SetBool("FacingLeft", true); 
         }
         else if (currDirection.x > 0)
         {
-            PlayerSR.flipX = false;
+            PlayerSR.flipX = true;
             anim.SetBool("FacingLeft", false); 
         }
 
@@ -100,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
     public void Fish()
     {
-        anim.SetTrigger("Fishing");
+        anim.SetTrigger("isFishing");
     }
 
     public void Release_Rod()
@@ -110,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
     public void End_Fish()
     {
-        anim.ResetTrigger("Fishing");
+        anim.ResetTrigger("isFishing");
         anim.SetTrigger("End_Fish");
     }
     public void SetMovementMultiplier(float multiplier)
