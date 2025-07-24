@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     #region Movement_variables
-    public float baseMoveSpeed = 0.05f;
+    public float baseMoveSpeed = 0.08f;
     public float moveSpeed;
     float x_input;
     float y_input;
@@ -63,7 +63,6 @@ public class PlayerController : MonoBehaviour
 
         Vector2 movement = new Vector2(x_input, y_input) * moveSpeed;
         PlayerRB.MovePosition(PlayerRB.position + movement);
-        moveSpeed = 0.05f;
         // anim.speed = 1;
 
         if (movement != Vector2.zero)
@@ -74,11 +73,11 @@ public class PlayerController : MonoBehaviour
         // anim.SetFloat("DirX", currDirection.x);
         // anim.SetFloat("DirY", currDirection.y);
 
-        if (currDirection.x > 0)
+        if (currDirection.x < 0)
         {
             PlayerSR.flipX = true;
         }
-        else if (currDirection.x < 0)
+        else if (currDirection.x > 0)
         {
             PlayerSR.flipX = false;
         }

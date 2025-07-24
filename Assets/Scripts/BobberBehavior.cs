@@ -9,7 +9,7 @@ public class BobberBehavior : MonoBehaviour
     public float biteDuration = 2f;
 
     [HideInInspector] public bool hasLanded = false;
-    private bool isBiteActive = false;
+    public bool isBiteActive = false;
 
 
     void Start()
