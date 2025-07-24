@@ -32,6 +32,7 @@ public class BobberBehavior : MonoBehaviour
     public void ItsBobbinTime()
     {
         hasLanded = true;
+        AudioManager.Instance.Play("Splish");
         StartCoroutine(BiteLoop());
     }
 

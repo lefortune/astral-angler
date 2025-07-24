@@ -70,8 +70,7 @@ AudioMixerGroupController:
   m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 3e386501918224199a54c6175d1edd0f
-  m_Children:
-  - {fileID: 5457534942454974251}
+  m_Children: []
   m_Volume: 9f48ef6ae70ad45c9b58d1bc343742f9
   m_Pitch: 20fc7d1e0f399426abdcd2e0c49d83fa
   m_Send: 00000000000000000000000000000000
@@ -118,6 +117,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -3997293777322495473}
   - {fileID: -1154449597647437369}
+  - {fileID: 5457534942454974251}
   m_Volume: b93d39f1873d04138bbf49febf804b51
   m_Pitch: 3b5f94578ad4a4207a51eaf2cc061174
   m_Send: 00000000000000000000000000000000
@@ -158,7 +158,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: UI SFX
+  m_Name: Foley
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 37921984088f3428db7b58ca945ab738
   m_Children: []
