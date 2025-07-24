@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         PlayerSR = GetComponent<SpriteRenderer>();
         PlayerColl = GetComponent<BoxCollider2D>();
-        // anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     private void Start()
@@ -72,7 +72,13 @@ public class PlayerController : MonoBehaviour
 
         if (movement != Vector2.zero)
         {
+            anim.SetTrigger("Moving");
             currDirection = movement.normalized;
+        }
+        else
+        {
+            Debug.Log("NotMoving");
+            anim.ResetTrigger("Moving");
         }
 
         // anim.SetFloat("DirX", currDirection.x);
@@ -80,14 +86,29 @@ public class PlayerController : MonoBehaviour
 
         if (currDirection.x < 0)
         {
-            PlayerSR.flipX = true;
+            PlayerSR.flipX = false;
         }
         else if (currDirection.x > 0)
         {
-            PlayerSR.flipX = false;
+            PlayerSR.flipX = true;
         }
     }
-    
+
+    public void Fish()
+    {
+        anim.SetTrigger("Fishing");
+    }
+
+    public void Release_Rod()
+    {
+        anim.SetTrigger("Release_Rod");
+    }
+
+    public void End_Fish()
+    {
+        anim.ResetTrigger("Fishing");
+        anim.SetTrigger("End_Fish");
+    }
     public void SetMovementMultiplier(float multiplier)
     {
         moveSpeed = baseMoveSpeed * multiplier;

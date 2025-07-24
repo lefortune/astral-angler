@@ -55,6 +55,7 @@ public class FishingController : MonoBehaviour
         {
             isCharging = true;
             playerController.SetMovementMultiplier(slowMoveMultiplier); // slow down when charging or fihsing
+            playerController.Fish(); // Run player fishing animation
             AudioManager.Instance.Play("Creak");
         }
 
@@ -80,7 +81,7 @@ public class FishingController : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && isCharging)
         {
             isCharging = false;
-
+            playerController.Release_Rod();
             float halfCharge = maxCharge / 2f;  // for convenience 
             float finalCharge = chargeMeter > halfCharge ? maxCharge - chargeMeter : chargeMeter; // if chargeMeter is over half, use the decreasing charge
             finalCharge = Math.Min(finalCharge, 5f);    // Manually capped at 5, change if needed
@@ -137,6 +138,7 @@ public class FishingController : MonoBehaviour
 
     private IEnumerator RecallBobber(bool caught)
     {
+        playerController.End_Fish();
         if (caught)
         {
             Debug.Log("Bobber caught a fish!");
