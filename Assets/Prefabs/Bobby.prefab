@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4171779316928305544}
   - component: {fileID: 4023962451126266393}
+  - component: {fileID: 3195740575784109284}
   m_Layer: 0
   m_Name: Bobby
   m_TagString: Untagged
@@ -87,3 +88,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3195740575784109284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325742050023152696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee1dd73cf412a4819a950ef8c9634318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
