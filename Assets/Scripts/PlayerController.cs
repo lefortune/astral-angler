@@ -86,12 +86,16 @@ public class PlayerController : MonoBehaviour
 
         if (currDirection.x < 0)
         {
-            PlayerSR.flipX = false;
+            PlayerSR.flipX = true;
+            anim.SetBool("FacingLeft", true); 
         }
         else if (currDirection.x > 0)
         {
-            PlayerSR.flipX = true;
+            PlayerSR.flipX = false;
+            anim.SetBool("FacingLeft", false); 
         }
+
+        anim.SetFloat("Speed", movement.magnitude);
     }
 
     public void Fish()
