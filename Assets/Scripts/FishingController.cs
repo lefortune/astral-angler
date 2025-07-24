@@ -75,7 +75,7 @@ public class FishingController : MonoBehaviour
             }
 
             chargeBarUI.UpdatePointer(chargeMeter / maxCharge);
-            Debug.Log($"Charge: {chargeMeter:F2}. Facing: {playerController.currDirection}");
+            // Debug.Log($"Charge: {chargeMeter:F2}. Facing: {playerController.currDirection}");
         }
 
         if (Input.GetMouseButtonUp(0) && isCharging)
