@@ -123,6 +123,7 @@ public class FishingController : MonoBehaviour
         bobberBehavior = currentBobber.GetComponent<BobberBehavior>();
         bobberBehavior.playerTransform = playerTransform;
         bobberBehavior.playerController = playerController;
+        bobberBehavior.fishingController = this;
 
         yield return StartCoroutine(AnimateBobberThrow(currentBobber.transform, worldTarget, 0.5f));    // 0.5f is duration
 
@@ -139,7 +140,7 @@ public class FishingController : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator RecallBobber(bool caught)
+    public IEnumerator RecallBobber(bool caught)
     {
         playerController.End_Fish();
         if (caught)

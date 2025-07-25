@@ -13,6 +13,7 @@ public class BobberBehavior : MonoBehaviour
 
     public Transform playerTransform;
     public PlayerController playerController;
+    public FishingController fishingController;
     private LineRenderer lineRenderer;
     private Vector3 sourcePosition;
 
@@ -82,5 +83,13 @@ public class BobberBehavior : MonoBehaviour
         AudioManager.Instance.PlayVaried("Confirm");
         // implement minigame logic here
         Debug.Log("Starting fishing minigame");
+    }
+
+    public void FishingGameEnd(bool caught)    
+    {
+        hasLanded = false;
+        isBiteActive = false;
+        FishingController.isFishingGame = false;
+        StartCoroutine(fishingController.RecallBobber(caught));
     }
 }
