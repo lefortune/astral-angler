@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
 
         Move();
 
+        CheckInteraction();
+
     }
     #endregion
 
@@ -86,12 +88,12 @@ public class PlayerController : MonoBehaviour
         if (currDirection.x < 0)
         {
             PlayerSR.flipX = false;
-            anim.SetBool("FacingLeft", true); 
+            anim.SetBool("FacingLeft", true);
         }
         else if (currDirection.x > 0)
         {
             PlayerSR.flipX = true;
-            anim.SetBool("FacingLeft", false); 
+            anim.SetBool("FacingLeft", false);
         }
 
         anim.SetFloat("Speed", movement.magnitude);
@@ -119,6 +121,59 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Interact_functions
+    
+    void CheckInteraction()
+    {
+        Vector2 colliderCenter = PlayerColl.bounds.center;
+        Vector2 colliderSize = PlayerColl.bounds.size;
+
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(
+            colliderCenter + currDirection / 2f,
+            new Vector2(colliderSize.x, colliderSize.y),
+            0f,
+            Vector2.zero,
+            0f
+        );
+
+        float closestDistance = float.MaxValue;
+        RaycastHit2D closestHit = new RaycastHit2D();
+
+        foreach (RaycastHit2D hit in hits) {
+            if (hit.transform.CompareTag("Interactable")) {
+                float distance = Vector2.Distance(colliderCenter + currDirection / 2, hit.point);
+                
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestHit = hit;
+                }
+            }
+        }
+
+        if (closestHit.collider != null) {
+            if (interactablePointer == null) {
+                Vector3 hitPosition = closestHit.collider.bounds.center;
+                hitPosition.y += 1.5f;
+
+                interactablePointer = Instantiate(pointerPrefab, hitPosition, Quaternion.identity);
+            } else {
+                Vector3 updatedPosition = closestHit.collider.bounds.center;
+                updatedPosition.y += 1.5f;
+                interactablePointer.transform.position = updatedPosition;
+            }
+
+            if (Input.GetKeyDown(KeyCode.E)) {
+                Debug.Log("Starting object interaction");
+                Destroy(interactablePointer);
+                interactablePointer = null;
+                closestHit.transform.GetComponent<InteractableManager>().Interact();
+            }
+        } else {
+            if (interactablePointer != null) {
+                Destroy(interactablePointer);
+                interactablePointer = null;
+            }
+        }
+    }
 
     #endregion
 }
