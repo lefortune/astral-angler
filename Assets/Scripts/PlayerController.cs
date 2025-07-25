@@ -166,14 +166,14 @@ public class PlayerController : MonoBehaviour
             if (interactablePointer == null)
             {
                 Vector3 hitPosition = closestHit.collider.bounds.center;
-                hitPosition.y += 1.5f;
+                hitPosition.y += 1f;
 
                 interactablePointer = Instantiate(pointerPrefab, hitPosition, Quaternion.identity);
             }
             else
             {
                 Vector3 updatedPosition = closestHit.collider.bounds.center;
-                updatedPosition.y += 1.5f;
+                updatedPosition.y += 1f;
                 interactablePointer.transform.position = updatedPosition;
             }
 

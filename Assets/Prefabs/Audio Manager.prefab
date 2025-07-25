@@ -77,6 +77,10 @@ MonoBehaviour:
     group: 
     clip: {fileID: 8300000, guid: 4f7317e4a6b97437ea3accf9a8c1d2af, type: 3}
     source: {fileID: 0}
+  - name: Music
+    group: 
+    clip: {fileID: 8300000, guid: fea9dc3fd97e545c3a2feeb73a59672a, type: 3}
+    source: {fileID: 0}
   musicGroup: {fileID: -3997293777322495473, guid: 1b345ab418fb74de08d201adc7ec87ad, type: 2}
   sfxGroup: {fileID: -1154449597647437369, guid: 1b345ab418fb74de08d201adc7ec87ad, type: 2}
   foleyGroup: {fileID: 5457534942454974251, guid: 1b345ab418fb74de08d201adc7ec87ad, type: 2}

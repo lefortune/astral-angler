@@ -21,23 +21,24 @@ public class BobberBehavior : MonoBehaviour
     {
         lineRenderer = GetComponent<LineRenderer>();
         hasLanded = false;
-        sourcePosition = playerTransform.position + new Vector3(playerController.currDirection.x, playerController.currDirection.y, 0f) * 0.9f; // Adjust bobber's line renderer to player position
     }
 
     void Update()
     {
+
         if (lineRenderer != null && playerTransform != null)
         {
+            sourcePosition = playerTransform.position + new Vector3(playerController.currDirection.x, 0f, 0f) * 0.9f; // Adjust bobber's line renderer to rod's position
             lineRenderer.SetPosition(0, transform.position + new Vector3(0f, 0.2f, 0f));       // Bobber end
-            lineRenderer.SetPosition(1, sourcePosition + new Vector3(0f, 0.4f, 0f));  // Player end
+            lineRenderer.SetPosition(1, sourcePosition + new Vector3(0f, 0.4f, 0f));    // Player end
         }
         if (isBiteActive && Input.GetMouseButtonDown(0))
         {
             Debug.Log("Bite confirmed - entering fishing minigame");
             FishingController.isFishingGame = true;
             isBiteActive = false;
-            StopAllCoroutines(); // stop loop
-            StartFishingGame();  // placeholder
+            StopAllCoroutines();
+            StartFishingGame();
         }
     }
 

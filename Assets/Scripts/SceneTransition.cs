@@ -6,7 +6,7 @@ public class SceneTransition : MonoBehaviour
 {
     public static SceneTransition Instance { get; private set; }  // Singleton instance
     public CanvasGroup fadeCanvasGroup;  // Reference to the CanvasGroup of the fade image
-    public float fadeDuration = 0.5f;      // Time for the fade in/out effect
+    public float fadeDuration = 0.4f;      // Time for the fade in/out effect
 
     private void Awake()
     {
@@ -29,17 +29,27 @@ public class SceneTransition : MonoBehaviour
     }
 
     // Call this method to start a fade transition
-    public void Transition()
+    public IEnumerator Transition(PlayerController playerController, Vector2 targetPosition)
     {
-        StartCoroutine(FadeAndLoad());
+        if (fadeCanvasGroup == null)
+        {
+            Debug.LogError("Fade CanvasGroup is not assigned.");
+            yield break;
+        }
+        yield return StartCoroutine(FadeOut());
+        playerController.SetPlayerPosition(targetPosition);
+        yield return new WaitForSeconds(0.3f);  // Wait for camera to settle 
+        yield return StartCoroutine(FadeIn());
     }
 
-    private IEnumerator FadeAndLoad()
+    public IEnumerator FadeOut()
     {
         // Fade out to black
         yield return StartCoroutine(Fade(1f));
-
-        // Fade in (reveal the new scene)
+    }
+    public IEnumerator FadeIn()
+    {
+        // Fade in from black
         yield return StartCoroutine(Fade(0f));
     }
 

@@ -17,9 +17,26 @@ public class InteractableManager : MonoBehaviour
     {
         if (objName == "DoorEntrance")
         {
-            SceneTransition.Instance.Transition();
-            playerController.SetPlayerPosition(new Vector2(100, 100)); // Set player position to entrance
+            StartCoroutine(SceneTransition.Instance.Transition(playerController, new Vector2(50f, -20f)));
             Debug.Log("Interacting with Cabin Door");
+        }
+
+        if (objName == "DoorExit")
+        {
+            StartCoroutine(SceneTransition.Instance.Transition(playerController, new Vector2(-2f, -0.5f)));
+            Debug.Log("Interacting with Cabin Exit");
+        }
+
+        if (objName == "Wheel")
+        {
+
+            Debug.Log("Interacting with Starfaring Wheel");
+        }
+        
+        if (objName == "Bridge")
+        {
+            StartCoroutine(SceneTransition.Instance.Transition(playerController, new Vector2(60f, 10f)));
+            Debug.Log("Interacting with Bridge");
         }
     }
 
