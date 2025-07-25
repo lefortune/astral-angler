@@ -11,14 +11,14 @@ public class dogFollow : MonoBehaviour
     #endregion
 
     #region animation
-    private Animator anim;
+    // private Animator anim;
     private SpriteRenderer sr;
     #endregion
 
     // damn i guess i do need a start fml
     void Start()
     {
-        anim = GetComponent<Animator>();
+        // anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>(); 
     }
 
@@ -44,12 +44,12 @@ public class dogFollow : MonoBehaviour
                 if (direction.x < -0.05f)
                 {
                     sr.flipX = true; // Facing left
-                    anim.SetBool("Walking", true);
+                    // anim.SetBool("Walking", true);
                 } 
                 else if (direction.x > 0.05f)
                 {
                     sr.flipX = false; // Facing right
-                    anim.SetBool("Walking", true);
+                    // anim.SetBool("Walking", true);
                 }
             } else {
 
