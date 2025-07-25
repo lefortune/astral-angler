@@ -58,6 +58,7 @@ public class BobberBehavior : MonoBehaviour
     void TriggerBite()
     {
         isBiteActive = true;
+        AudioManager.Instance.Play("FishBite");
         Debug.Log("Bite detected");
         // TODO: Trigger splash animation / sound / vibration
     }

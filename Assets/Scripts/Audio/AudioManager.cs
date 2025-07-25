@@ -75,6 +75,21 @@ public class AudioManager : MonoBehaviour
         s.source.PlayOneShot(s.clip); // Use PlayOneShot for sound effects (won't interrupt)
     }
 
+    public void PlayVaried(string name, float minPitch = 0.6f, float maxPitch = 1.4f)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound not found: " + name);
+            return;
+        }
+        float originalPitch = s.source.pitch;
+        s.source.pitch *= UnityEngine.Random.Range(minPitch, maxPitch);
+        s.source.PlayOneShot(s.clip);
+        s.source.pitch = originalPitch;
+    }
+
+
     public bool IsPlaying(string audio)
     {
         Sound s = Array.Find(sounds, sound => sound.name == audio);
