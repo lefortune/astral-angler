@@ -7,7 +7,9 @@ public class dogFollow : MonoBehaviour
     public Transform playerTransform; 
     public Tilemap path; 
     public float followDistance = 0.5f; 
-    public float moveSpeed = 2f; 
+    public float moveSpeed = 2f;
+    public float randomBarkInterval = 1f; 
+    float nextBarkTime = 0f;
     #endregion
 
     #region animation
@@ -19,13 +21,20 @@ public class dogFollow : MonoBehaviour
     void Start()
     {
         // anim = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>(); 
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         followPlayer();
+
+        // Bark
+        if (Time.time >= nextBarkTime) {
+            AudioManager.Instance.PlayVaried("Bark");
+            nextBarkTime = Time.time + randomBarkInterval;
+            randomBarkInterval = Random.Range(5f, 28f);
+        }
     }
 
     void followPlayer()
