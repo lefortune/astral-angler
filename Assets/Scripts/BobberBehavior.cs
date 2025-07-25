@@ -82,8 +82,10 @@ public class BobberBehavior : MonoBehaviour
     {
         AudioManager.Instance.Stop("FishBite");
         AudioManager.Instance.PlayVaried("Confirm");
-        // implement minigame logic here
         Debug.Log("Starting fishing minigame");
+
+        // implement minigame logic here
+        // it should call FishingGameEnd when done, with boolean indicating if catch was successful
 
         FishingGameEnd(false);  // placeholder
     }
