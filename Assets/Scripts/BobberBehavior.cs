@@ -73,6 +73,7 @@ public class BobberBehavior : MonoBehaviour
     {
         isBiteActive = true;
         AudioManager.Instance.Play("FishBite");
+        StartCoroutine(ShakeEffect(1.5f, 0.06f));
         Debug.Log("Bite detected");
         // TODO: Trigger splash animation / sound / vibration
     }
@@ -83,13 +84,32 @@ public class BobberBehavior : MonoBehaviour
         AudioManager.Instance.PlayVaried("Confirm");
         // implement minigame logic here
         Debug.Log("Starting fishing minigame");
+
+        FishingGameEnd(false);  // placeholder
     }
 
-    public void FishingGameEnd(bool caught)    
+    public void FishingGameEnd(bool caught)
     {
         hasLanded = false;
         isBiteActive = false;
         FishingController.isFishingGame = false;
         StartCoroutine(fishingController.RecallBobber(caught));
     }
+    
+    
+    private IEnumerator ShakeEffect(float duration, float magnitude)
+    {
+        Vector3 originalPos = transform.localPosition;
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+            transform.localPosition = originalPos + new Vector3(x, y, 0f);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.localPosition = originalPos;
+    }
+
 }
