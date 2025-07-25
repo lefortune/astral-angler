@@ -119,82 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &57196526
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 57196528}
-  - component: {fileID: 57196529}
-  m_Layer: 0
-  m_Name: Audio Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &57196528
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57196526}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &57196529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57196526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a02a53c88a9d4845aa56a7d32ba1d90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: CastLine
-    group: 
-    clip: {fileID: 8300000, guid: 31027c56c7e11494caa2f809e4c33a2b, type: 3}
-    source: {fileID: 0}
-  - name: Splish
-    group: 
-    clip: {fileID: 8300000, guid: f8c0d981b3fac4be0a5e1b1a3a2b4b5e, type: 3}
-    source: {fileID: 0}
-  - name: Creak
-    group: 
-    clip: {fileID: 8300000, guid: 7c45273d815c042b38fa8dd590b7eed4, type: 3}
-    source: {fileID: 0}
-  - name: CatchFish
-    group: 
-    clip: {fileID: 8300000, guid: c75e56389db8a44fa901d3f9e9072fdf, type: 3}
-    source: {fileID: 0}
-  - name: Line
-    group: 
-    clip: {fileID: 8300000, guid: c0ba2fc8b70f04666b26a0aad7d4f517, type: 3}
-    source: {fileID: 0}
-  - name: FishBite
-    group: 
-    clip: {fileID: 8300000, guid: 968b760707dcc4fdaae625fbb47db918, type: 3}
-    source: {fileID: 0}
-  - name: Bark
-    group: 
-    clip: {fileID: 8300000, guid: a524a0daa539e42a087913edac300704, type: 3}
-    source: {fileID: 0}
-  musicGroup: {fileID: -3997293777322495473, guid: 1b345ab418fb74de08d201adc7ec87ad, type: 2}
-  sfxGroup: {fileID: -1154449597647437369, guid: 1b345ab418fb74de08d201adc7ec87ad, type: 2}
-  foleyGroup: {fileID: 5457534942454974251, guid: 1b345ab418fb74de08d201adc7ec87ad, type: 2}
 --- !u!1 &364864494
 GameObject:
   m_ObjectHideFlags: 0
@@ -4807,6 +4731,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89b95f37920ea4eef9b0d577c57dc753, type: 3}
+--- !u!1001 &1000432809595865414
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4217184459477622083, guid: c69b2c424bd174214ba6bb79f93c2ff2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217184459477622083, guid: c69b2c424bd174214ba6bb79f93c2ff2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217184459477622083, guid: c69b2c424bd174214ba6bb79f93c2ff2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217184459477622083, guid: c69b2c424bd174214ba6bb79f93c2ff2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217184459477622083, guid: c69b2c424bd174214ba6bb79f93c2ff2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217184459477622083, guid: c69b2c424bd174214ba6bb79f93c2ff2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217184459477622083, guid: c69b2c424bd174214ba6bb79f93c2ff2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217184459477622083, guid: c69b2c424bd174214ba6bb79f93c2ff2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217184459477622083, guid: c69b2c424bd174214ba6bb79f93c2ff2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217184459477622083, guid: c69b2c424bd174214ba6bb79f93c2ff2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035823731303085813, guid: c69b2c424bd174214ba6bb79f93c2ff2, type: 3}
+      propertyPath: m_Name
+      value: Audio Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c69b2c424bd174214ba6bb79f93c2ff2, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4816,7 +4797,7 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1958427003}
   - {fileID: 536722489}
-  - {fileID: 57196528}
+  - {fileID: 1000432809595865414}
   - {fileID: 967615077580019591}
   - {fileID: 364864497}
   - {fileID: 824110915646438364}

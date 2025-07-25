@@ -11,14 +11,26 @@ public class BobberBehavior : MonoBehaviour
     [HideInInspector] public bool hasLanded = false;
     public bool isBiteActive = false;
 
+    public Transform playerTransform;
+    public PlayerController playerController;
+    private LineRenderer lineRenderer;
+    private Vector3 sourcePosition;
+
 
     void Start()
     {
+        lineRenderer = GetComponent<LineRenderer>();
         hasLanded = false;
+        sourcePosition = playerTransform.position + new Vector3(playerController.currDirection.x, playerController.currDirection.y, 0f) * 0.9f; // Adjust bobber's line renderer to player position
     }
 
     void Update()
     {
+        if (lineRenderer != null && playerTransform != null)
+        {
+            lineRenderer.SetPosition(0, transform.position + new Vector3(0f, 0.2f, 0f));       // Bobber end
+            lineRenderer.SetPosition(1, sourcePosition + new Vector3(0f, 0.4f, 0f));  // Player end
+        }
         if (isBiteActive && Input.GetMouseButtonDown(0))
         {
             Debug.Log("Bite confirmed - entering fishing minigame");
@@ -65,6 +77,8 @@ public class BobberBehavior : MonoBehaviour
 
     void StartFishingGame()
     {
+        AudioManager.Instance.Stop("FishBite");
+        AudioManager.Instance.PlayVaried("Confirm");
         // implement minigame logic here
         Debug.Log("Starting fishing minigame");
     }

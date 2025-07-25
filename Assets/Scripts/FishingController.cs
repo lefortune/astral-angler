@@ -121,6 +121,9 @@ public class FishingController : MonoBehaviour
 
         currentBobber = Instantiate(bobberPrefab, castOrigin.position, Quaternion.identity);    // Instantiate bobber at cast origin
         bobberBehavior = currentBobber.GetComponent<BobberBehavior>();
+        bobberBehavior.playerTransform = playerTransform;
+        bobberBehavior.playerController = playerController;
+
         yield return StartCoroutine(AnimateBobberThrow(currentBobber.transform, worldTarget, 0.5f));    // 0.5f is duration
 
         if (fishingTile != null)

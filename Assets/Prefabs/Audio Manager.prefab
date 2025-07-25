@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8035823731303085813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4217184459477622083}
+  - component: {fileID: 6008471596715670354}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4217184459477622083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8035823731303085813}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6008471596715670354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8035823731303085813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a02a53c88a9d4845aa56a7d32ba1d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: CastLine
+    group: 
+    clip: {fileID: 8300000, guid: 31027c56c7e11494caa2f809e4c33a2b, type: 3}
+    source: {fileID: 0}
+  - name: Splish
+    group: 
+    clip: {fileID: 8300000, guid: f8c0d981b3fac4be0a5e1b1a3a2b4b5e, type: 3}
+    source: {fileID: 0}
+  - name: Creak
+    group: 
+    clip: {fileID: 8300000, guid: 7c45273d815c042b38fa8dd590b7eed4, type: 3}
+    source: {fileID: 0}
+  - name: CatchFish
+    group: 
+    clip: {fileID: 8300000, guid: c75e56389db8a44fa901d3f9e9072fdf, type: 3}
+    source: {fileID: 0}
+  - name: Line
+    group: 
+    clip: {fileID: 8300000, guid: c0ba2fc8b70f04666b26a0aad7d4f517, type: 3}
+    source: {fileID: 0}
+  - name: FishBite
+    group: 
+    clip: {fileID: 8300000, guid: 968b760707dcc4fdaae625fbb47db918, type: 3}
+    source: {fileID: 0}
+  - name: Bark
+    group: 
+    clip: {fileID: 8300000, guid: a524a0daa539e42a087913edac300704, type: 3}
+    source: {fileID: 0}
+  - name: Confirm
+    group: 
+    clip: {fileID: 8300000, guid: 4f7317e4a6b97437ea3accf9a8c1d2af, type: 3}
+    source: {fileID: 0}
+  musicGroup: {fileID: -3997293777322495473, guid: 1b345ab418fb74de08d201adc7ec87ad, type: 2}
+  sfxGroup: {fileID: -1154449597647437369, guid: 1b345ab418fb74de08d201adc7ec87ad, type: 2}
+  foleyGroup: {fileID: 5457534942454974251, guid: 1b345ab418fb74de08d201adc7ec87ad, type: 2}
